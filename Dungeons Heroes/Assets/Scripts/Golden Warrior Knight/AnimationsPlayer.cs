@@ -10,7 +10,7 @@ public class AnimationsPlayer : MonoBehaviour
     public float speed;
     public Animator animator;
     public float raycastDistance;
-    private bool isColliding = false;
+    private int isColliding = 0;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -28,21 +28,34 @@ public class AnimationsPlayer : MonoBehaviour
         {
             
             UnityEngine.Debug.Log("Objects");
-            isColliding = true;
+            isColliding = 1;
         }
     }
 
-    
+    void OnCollisionStay(Collision collisionInfo)
+    {
+       if (collisionInfo.collider.tag == "Obstacle")
+        {
+
+            UnityEngine.Debug.Log("Objects");
+            isColliding = 2;
+        }
+    }
 
     void OnCollisionExit(Collision collisionInfo)
     {
         if (collisionInfo.collider.tag == "Obstacle")
         {
-            isColliding = false;
+            isColliding = 0;
         }
        
     }
-
+    /*
+    void GetBombToHand()
+    {
+        transform.position 
+    }
+    */
         // Update is called once per frame
         void Update()
     {
@@ -74,7 +87,8 @@ public class AnimationsPlayer : MonoBehaviour
 
         moveDirection *= speed * Time.deltaTime;
 
-        if (isColliding) moveDirection = -1 * moveDirection;
+        if (isColliding == 1) moveDirection = Vector3.zero;
+        else if (isColliding == 2) moveDirection = Vector3.zero;
         transform.position += moveDirection;
 
         rigidbody.MovePosition(rigidbody.position + moveDirection);
@@ -84,8 +98,6 @@ public class AnimationsPlayer : MonoBehaviour
             transform.LookAt(transform.position + moveDirection);
         }
 
-
-        
         if (Input.GetKeyDown(KeyCode.Z)) animator.Play("one_hand_attack1");
         if (Input.GetKeyDown(KeyCode.X)) animator.Play("one_hand_attack2");
         if (Input.GetKeyDown(KeyCode.C)) animator.Play("two_hand_attack1");
