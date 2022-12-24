@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationsPlayer : MonoBehaviour
 {  
     
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     public float speed;
     public Animator animator;
