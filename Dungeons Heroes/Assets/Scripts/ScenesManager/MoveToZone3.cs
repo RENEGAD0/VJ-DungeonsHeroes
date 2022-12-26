@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MoveToZone3 : MonoBehaviour
 {
-    private bool isPlayerInRange;
     private void OnTriggerEnter(Collider collision) {
         if (collision.gameObject.CompareTag("Player")){
-            isPlayerInRange = true;
             SceneManager.LoadScene(3);
         }
     }

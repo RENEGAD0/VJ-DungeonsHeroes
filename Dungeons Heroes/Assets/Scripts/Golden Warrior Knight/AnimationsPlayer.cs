@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnimationsPlayer : MonoBehaviour
 {  
@@ -11,6 +12,11 @@ public class AnimationsPlayer : MonoBehaviour
     public Animator animator;
     public float raycastDistance;
     private int isColliding = 0;
+
+
+    public float HP_Min;
+    public float HP_Max;
+    public Image barra;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -119,6 +125,8 @@ public class AnimationsPlayer : MonoBehaviour
          //
         }
         */
+        barra.fillAmount = HP_Min / HP_Max;
+
     }
 
     private void FixedUpdate()
