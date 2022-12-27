@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 926ef5a0507ff8f408d2d617039d2abc
+=======
+<<<<<<< HEAD:Dungeons Heroes/Assets/Scripts/Boss/Flamethrower.cs.meta
+guid: af434617f0277fe48a9834cad1f757bb
+=======
+guid: 926ef5a0507ff8f408d2d617039d2abc
+>>>>>>> dev:Dungeons Heroes/Assets/Scripts/Boss/HitBoss.cs.meta
+>>>>>>> dev
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

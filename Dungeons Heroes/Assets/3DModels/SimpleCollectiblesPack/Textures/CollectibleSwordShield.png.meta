@@ -1,6 +1,16 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 72733fa0130149a4f82e063f5b977084
 timeCreated: 1531419923
+=======
+<<<<<<< HEAD:Dungeons Heroes/Assets/3DModels/SimpleCollectiblesPack/Textures/Collectibles 1.png.meta
+guid: 18caac7b76c3dc74ca374e998b3b6da9
+timeCreated: 1531340088
+=======
+guid: 72733fa0130149a4f82e063f5b977084
+timeCreated: 1531419923
+>>>>>>> dev:Dungeons Heroes/Assets/3DModels/SimpleCollectiblesPack/Textures/CollectibleSwordShield.png.meta
+>>>>>>> dev
 licenseType: Store
 TextureImporter:
   fileIDToRecycleName: {}

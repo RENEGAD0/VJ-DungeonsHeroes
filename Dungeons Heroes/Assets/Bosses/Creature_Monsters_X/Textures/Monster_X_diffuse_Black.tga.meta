@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Dungeons Heroes/Assets/Bosses/Creature_Monsters_X/Textures/Monster_X_diffuse_Black.tga.meta
 guid: 37895b4cad22c7644ac0f5cd124c27d9
+=======
+guid: 05cce5d45378e1c498480f2c7d5ae763
+>>>>>>> dev:Dungeons Heroes/Assets/Bosses/Creature_Monsters_X/Textures/Monster_X_diffuse_BlackPSD.psd.meta
+=======
+guid: 37895b4cad22c7644ac0f5cd124c27d9
+>>>>>>> dev
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

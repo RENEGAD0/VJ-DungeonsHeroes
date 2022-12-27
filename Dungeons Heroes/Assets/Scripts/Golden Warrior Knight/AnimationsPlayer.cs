@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+<<<<<<< HEAD
 
 
 public class AnimationsPlayer : MonoBehaviour
@@ -10,12 +11,20 @@ public class AnimationsPlayer : MonoBehaviour
     private new Rigidbody rigidbody;
 
     [SerializeField] private float speed = 2f;
+=======
+
+public class AnimationsPlayer : MonoBehaviour
+{  
+    
+    private new Rigidbody rigidbody;
+>>>>>>> dev
 
     public Animator animator;
     public float raycastDistance;
     private int isColliding = 0;
 
 
+<<<<<<< HEAD
     public float health;
     private float sizeWeapon;
     // transform.localScale = new Vector3(2, transform.localScale.y, transform.localScale.z);
@@ -24,6 +33,11 @@ public class AnimationsPlayer : MonoBehaviour
     public float HP_Max;
     public Image barra;
     private Collider swordCollider;
+=======
+    public float HP_Min;
+    public float HP_Max;
+    public Image barra;
+>>>>>>> dev
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -200,6 +214,7 @@ public class AnimationsPlayer : MonoBehaviour
             animator.Play("one_hand_attack1");
             swordCollider.enabled = true;
         }
+<<<<<<< HEAD
         if (Input.GetKey(KeyCode.X))
         {
             animator.Play("one_hand_attack2");
@@ -225,6 +240,11 @@ public class AnimationsPlayer : MonoBehaviour
         barra.fillAmount = HP_Min / HP_Max;
 
 
+=======
+        */
+        barra.fillAmount = HP_Min / HP_Max;
+
+>>>>>>> dev
     }
 
     private void FixedUpdate()

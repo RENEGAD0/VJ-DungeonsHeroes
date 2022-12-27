@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Dungeons Heroes/Assets/3DModels/SimpleCollectiblesPack/Textures/Collectibles 3.png.meta
 guid: 663c9e8f8135f9f49901eec607cca177
+=======
+guid: c9ebb98756390544ca89206fd4b3023c
+>>>>>>> dev:Dungeons Heroes/Assets/3DModels/SimpleCollectiblesPack/Textures/Collectibles 2.png.meta
+=======
+guid: 663c9e8f8135f9f49901eec607cca177
+>>>>>>> dev
 timeCreated: 1531340088
 licenseType: Store
 TextureImporter:

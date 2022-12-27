@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: a90c41fd189981448b417c4bf1c361b6
+=======
+<<<<<<< HEAD:Dungeons Heroes/Assets/3DModels/Monster_Orc (Troll)/Prefabs/monster_non_anim_orc.prefab.meta
+guid: cb2551d5c39ec4700b19f3b57c030da4
+=======
+guid: a90c41fd189981448b417c4bf1c361b6
+>>>>>>> dev:Dungeons Heroes/Assets/Prefabs/CoinGold.prefab.meta
+>>>>>>> dev
 PrefabImporter:
   externalObjects: {}
   userData: 
