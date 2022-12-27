@@ -57,6 +57,6 @@ public class CameraControllerScene2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkCameraFromPlayerLocation(player.position.x, player.position.y, player.position.z);
+        //checkCameraFromPlayerLocation(player.position.x, player.position.y, player.position.z);
     }
 }

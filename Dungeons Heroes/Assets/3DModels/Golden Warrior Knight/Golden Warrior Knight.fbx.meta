@@ -37,14 +37,22 @@ ModelImporter:
       takeName: walk
       internalID: -3419257869308726280
       firstFrame: 0
+<<<<<<< Updated upstream
       lastFrame: 35
+=======
+      lastFrame: 84
+>>>>>>> Stashed changes
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -73,7 +81,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -102,7 +114,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -118,7 +134,11 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
+<<<<<<< Updated upstream
       additiveReferencePoseFrame: 0
+=======
+      additiveReferencePoseFrame: 140
+>>>>>>> Stashed changes
     - serializedVersion: 16
       name: idle
       takeName: idle
@@ -131,7 +151,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -147,7 +171,11 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
+<<<<<<< Updated upstream
       additiveReferencePoseFrame: 0
+=======
+      additiveReferencePoseFrame: 200
+>>>>>>> Stashed changes
     - serializedVersion: 16
       name: die
       takeName: die
@@ -160,7 +188,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -176,7 +208,11 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
+<<<<<<< Updated upstream
       additiveReferencePoseFrame: 0
+=======
+      additiveReferencePoseFrame: 480
+>>>>>>> Stashed changes
     - serializedVersion: 16
       name: hurt
       takeName: hurt
@@ -189,7 +225,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -205,7 +245,11 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
+<<<<<<< Updated upstream
       additiveReferencePoseFrame: 0
+=======
+      additiveReferencePoseFrame: 780
+>>>>>>> Stashed changes
     - serializedVersion: 16
       name: one_hand_attack1
       takeName: one_hand_attack1
@@ -218,7 +262,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -234,7 +282,11 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
+<<<<<<< Updated upstream
       additiveReferencePoseFrame: 0
+=======
+      additiveReferencePoseFrame: 640
+>>>>>>> Stashed changes
     - serializedVersion: 16
       name: one_hand_attack2
       takeName: one_hand_attack2
@@ -247,7 +299,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -276,7 +332,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -292,7 +352,11 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
+<<<<<<< Updated upstream
       additiveReferencePoseFrame: 0
+=======
+      additiveReferencePoseFrame: 1000
+>>>>>>> Stashed changes
     - serializedVersion: 16
       name: two_hand_attack2
       takeName: two_hand_attack2
@@ -305,7 +369,11 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+<<<<<<< Updated upstream
       loopTime: 0
+=======
+      loopTime: 1
+>>>>>>> Stashed changes
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -387,7 +455,11 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+<<<<<<< Updated upstream
   avatarSetup: 0
+=======
+  avatarSetup: 1
+>>>>>>> Stashed changes
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
