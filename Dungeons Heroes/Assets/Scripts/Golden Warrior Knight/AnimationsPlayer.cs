@@ -3,24 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class AnimationsPlayer : MonoBehaviour
-{  
-    
+{
+
     private new Rigidbody rigidbody;
 
-    public float speed;
+    [SerializeField] private float speed = 2f;
+
     public Animator animator;
     public float raycastDistance;
     private int isColliding = 0;
 
 
+    public float health;
+    private float sizeWeapon;
+    // transform.localScale = new Vector3(2, transform.localScale.y, transform.localScale.z);
+    private float run_speed;
     public float HP_Min;
     public float HP_Max;
-    public Image barra;
+    //public Image barra;
+    private Collider swordCollider;
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+        run_speed = speed * 2;
+
+        GameObject sword = GameObject.Find("sword");
+        swordCollider = sword.GetComponent<Collider>();
+        //swordCollider.isTrigger = true;
     }
 
     void OnCollisionEnter(Collision collisionInfo)
@@ -28,22 +40,22 @@ public class AnimationsPlayer : MonoBehaviour
         if (collisionInfo.collider.tag == "Floor")
         {
 
-            UnityEngine.Debug.Log(collisionInfo);
+
         }
         else if (collisionInfo.collider.tag == "Obstacle")
         {
-            
-            UnityEngine.Debug.Log("Objects");
+
             isColliding = 1;
+
         }
     }
 
     void OnCollisionStay(Collision collisionInfo)
     {
-       if (collisionInfo.collider.tag == "Obstacle")
+        if (collisionInfo.collider.tag == "Obstacle")
         {
 
-            UnityEngine.Debug.Log("Objects");
+
             isColliding = 2;
         }
     }
@@ -54,78 +66,164 @@ public class AnimationsPlayer : MonoBehaviour
         {
             isColliding = 0;
         }
-       
     }
-    /*
-    void GetBombToHand()
+
+    bool AnimatorIsPlaying()
     {
-        transform.position 
+        return animator.GetCurrentAnimatorStateInfo(0).length > 0;
     }
-    */
-        // Update is called once per frame
-        void Update()
+
+    bool AnimatorIsPlaying(string stateName)
+    {
+        return AnimatorIsPlaying() && animator.GetCurrentAnimatorStateInfo(0).IsName(stateName);
+    }
+
+    void debugAnimation()
+    {
+        AnimatorClipInfo[] clipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        if (clipInfo.Length > 0)
+        {
+            string animationName = clipInfo[0].clip.name;
+            Debug.Log("Currently playing animation: " + animationName);
+        }
+    }
+    void Movement()
     {
         Vector3 moveDirection = Vector3.zero;
+        bool not_attacking = AnimatorIsPlaying("walk") || AnimatorIsPlaying("idle") || AnimatorIsPlaying("run");
+        if (not_attacking)
+        {
+            swordCollider.enabled = false;
+            //swordCollider.isTrigger = true;
+            if (Input.GetKey(KeyCode.W))
+            {
+                if (Input.GetKey(KeyCode.H))
+                {
+                    animator.Play("run");
+                    moveDirection += Vector3.back;
+                    speed = run_speed;
+                    animator.SetBool("Run", true);
+                }
+                else
+                {
+                    animator.SetBool("Run", false);
+                    animator.Play("walk");
+                    moveDirection += Vector3.back;
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            animator.Play("walk");
-            moveDirection += Vector3.back;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            animator.Play("walk");
-            moveDirection += Vector3.forward;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            animator.Play("walk");
-            moveDirection += Vector3.right;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            animator.Play("walk");
-            moveDirection += Vector3.left;
+                }
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                if (Input.GetKey(KeyCode.H))
+                {
+                    animator.Play("run");
+                    moveDirection += Vector3.forward;
+                    speed = run_speed;
+                    animator.SetBool("Run", true);
+                }
+                else
+                {
+                    animator.SetBool("Run", false);
+                    animator.Play("walk");
+                    moveDirection += Vector3.forward;
+
+                }
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                if (Input.GetKey(KeyCode.H))
+                {
+                    animator.SetBool("Run", true);
+                    animator.Play("run");
+                    moveDirection += Vector3.right;
+                    speed = run_speed; ;
+
+                }
+                else
+                {
+                    animator.SetBool("Run", false);
+                    animator.Play("walk");
+                    moveDirection += Vector3.right;
+
+                }
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                if (Input.GetKey(KeyCode.H))
+                {
+                    animator.SetBool("Run", true);
+                    animator.Play("run");
+                    moveDirection += Vector3.left;
+                    speed = run_speed;
+
+                }
+                else
+                {
+                    animator.SetBool("Run", false);
+                    animator.Play("walk");
+                    moveDirection += Vector3.left;
+
+                }
+
+            }
         }
 
-       
         moveDirection = moveDirection.normalized;
 
         moveDirection *= speed * Time.deltaTime;
 
-        if (isColliding == 1) moveDirection = Vector3.zero;
-        else if (isColliding == 2) moveDirection = Vector3.zero;
+        //if (isColliding == 1) moveDirection = Vector3.zero;
+        //else if (isColliding == 2) moveDirection = Vector3.zero;
         transform.position += moveDirection;
 
         rigidbody.MovePosition(rigidbody.position + moveDirection);
+        var velocity = moveDirection / Time.deltaTime;
+        animator.SetFloat("Speed", velocity.magnitude);
 
         if (moveDirection != Vector3.zero)
         {
             transform.LookAt(transform.position + moveDirection);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z)) animator.Play("one_hand_attack1");
-        if (Input.GetKeyDown(KeyCode.X)) animator.Play("one_hand_attack2");
-        if (Input.GetKeyDown(KeyCode.C)) animator.Play("two_hand_attack1");
-        if (Input.GetKeyDown(KeyCode.V)) animator.Play("two_hand_attack2");
-        if (Input.GetKeyDown(KeyCode.B)) animator.Play("hurt");
-        if (Input.GetKeyDown(KeyCode.N)) animator.Play("die");
-        /*
-        // Create a ray using the origin and direction
-        Vector3 direction = Vector3.forward;
-        Ray theRay = new Ray(transform.position, transform.TransformDirection(direction * range));
-        Debug.DrawRay(transform.position, transform.TransformDirection(direction * range));
 
-        if(Physics.Raycast(theRay,out RaycastHit hit, range))
+    }
+
+
+    void Update()
+    {
+        speed = 2f;
+
+        Movement();
+
+        if (Input.GetKey(KeyCode.V))
         {
-            if(hit.collider.tag == "Obstacles")
-            {
-                UnityEngine.Debug.Log("SDASDASDASDAS");
-            }
-         //
+            animator.Play("one_hand_attack1");
+            swordCollider.enabled = true;
         }
-        */
-        barra.fillAmount = HP_Min / HP_Max;
+        if (Input.GetKey(KeyCode.X))
+        {
+            animator.Play("one_hand_attack2");
+            swordCollider.enabled = true;
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            animator.Play("two_hand_attack1");
+            swordCollider.enabled = true;
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            animator.Play("two_hand_attack2");
+            swordCollider.enabled = true;
+        }
+        if (Input.GetKey(KeyCode.B))
+        {
+            animator.Play("hurt");
+        }
+        if (Input.GetKey(KeyCode.N)) animator.Play("die");
+
+
+       // barra.fillAmount = HP_Min / HP_Max;
+
 
     }
 
