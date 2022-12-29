@@ -14,14 +14,12 @@ public class swordCollider : MonoBehaviour
         }
         else if (collisionInfo.collider.tag == "Obstacle")
         {
-            swordColl.enabled = false;
             swordColl.isTrigger = true;
             UnityEngine.Debug.Log("AAAAAAAAAAAAAAAAAAAAAAA");
         }
         else if (collisionInfo.collider.tag == "Enemy")
         {
             swordColl.isTrigger = false;
-            swordColl.enabled = true;
             UnityEngine.Debug.Log(collisionInfo);
         }
     }
@@ -42,9 +40,4 @@ public class swordCollider : MonoBehaviour
         swordColl = sword.GetComponent<Collider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

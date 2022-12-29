@@ -32,7 +32,7 @@ public class AnimationsPlayer : MonoBehaviour
 
         GameObject sword = GameObject.Find("sword");
         swordCollider = sword.GetComponent<Collider>();
-        //swordCollider.isTrigger = true;
+        // swordCollider.isTrigger = true;
     }
 
     void OnCollisionEnter(Collision collisionInfo)
@@ -44,7 +44,15 @@ public class AnimationsPlayer : MonoBehaviour
         }
         else if (collisionInfo.collider.tag == "Obstacle")
         {
+            
+            Physics.IgnoreCollision(collisionInfo.collider, swordCollider);
 
+            isColliding = 1;
+
+        }
+        else if (collisionInfo.collider.tag == "Enemy")
+        {
+            swordCollider.isTrigger = false;
             isColliding = 1;
 
         }
@@ -54,8 +62,6 @@ public class AnimationsPlayer : MonoBehaviour
     {
         if (collisionInfo.collider.tag == "Obstacle")
         {
-
-
             isColliding = 2;
         }
     }
@@ -94,7 +100,6 @@ public class AnimationsPlayer : MonoBehaviour
         if (not_attacking)
         {
             swordCollider.enabled = false;
-            //swordCollider.isTrigger = true;
             if (Input.GetKey(KeyCode.W))
             {
                 if (Input.GetKey(KeyCode.H))
