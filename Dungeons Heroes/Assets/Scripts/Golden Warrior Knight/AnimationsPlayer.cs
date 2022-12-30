@@ -7,14 +7,12 @@ using UnityEngine.UI;
 public class AnimationsPlayer : MonoBehaviour
 {
 
-    private new Rigidbody rigidbody;
+    public new Rigidbody rigidbody;
 
     [SerializeField] private float speed = 2f;
 
     public Animator animator;
     public float raycastDistance;
-    private int isColliding = 0;
-
 
     public float health;
     private float sizeWeapon;
@@ -24,37 +22,79 @@ public class AnimationsPlayer : MonoBehaviour
     public float HP_Max;
     //public Image barra;
     private Collider swordCollider;
+    public bool dead;
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
-        run_speed = speed * 2;
-
+        run_speed =2 *speed ;
         GameObject sword = GameObject.Find("sword");
         swordCollider = sword.GetComponent<Collider>();
-        // swordCollider.isTrigger = true;
     }
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        if (collisionInfo.collider.tag == "Floor")
-        {
 
-
-        }
-        else if (collisionInfo.collider.tag == "Obstacle")
+        if (collisionInfo.collider.tag == "Obstacle")
         {
-            
             Physics.IgnoreCollision(collisionInfo.collider, swordCollider);
-
-            isColliding = 1;
-
         }
         else if (collisionInfo.collider.tag == "Enemy")
         {
-            swordCollider.isTrigger = false;
-            isColliding = 1;
+            GameObject collidedObject = collisionInfo.gameObject;
+            //float forceMagnitude = 50.0f;
+            Vector3 force;
+            float distance;
+            force = transform.forward;
+            distance = 0.1f;
+            bool found = false;
+            foreach (ContactPoint contact in collisionInfo.contacts)
+            {
+                if (contact.thisCollider.name == "sword")
+                {
+                    found = true;
+                    Debug.Log("Collider with name " + contact.thisCollider.name + " was involved in the collision");
+                    Rigidbody rb = collidedObject.GetComponent<Rigidbody>();
 
+                    if (rb != null)
+                    {
+                        float impulse = rb.mass * distance / Time.fixedDeltaTime;
+                        rb.AddForce(force * impulse, ForceMode.Impulse);
+                        /*Vector3 forceDirection = transform.forward;
+                        forceDirection.y = 0;
+                        forceDirection.Normalize();
+                        rb.AddForce(forceDirection * forceMagnitude, ForceMode.Impulse);
+                        */
+                        // rb.AddForce(-transform.forward * 50.0f, ForceMode.Impulse);
+                        // rb.AddForce(Vector3.forward * forceMagnitude, ForceMode.Impulse);
+                    }
+                }
+            }
+
+            if (!found)
+            {
+                HP_Min -= 20;
+                Debug.Log("hp:MIn Player: " + HP_Min);
+            }
+            /*
+            Rigidbody rb = collidedObject.GetComponent<Rigidbody>();
+
+                if (rb != null)
+                {
+                    Vector3 forceDirection = transform.forward;
+                    forceDirection.y = 0;
+
+                    // Normalize the force direction
+                    forceDirection.Normalize();
+
+                    // Apply the force in the calculated direction
+                    rb.AddForce(forceDirection * forceMagnitude, ForceMode.Impulse);
+                    //rb.AddForce(-transform.forward * 50.0f, ForceMode.Impulse);
+                    //rb.AddForce(Vector3.forward * forceMagnitude, ForceMode.Impulse);
+                }
+            */
+            
+            Debug.Log("Contacto enemigo desde player");
         }
     }
 
@@ -62,7 +102,7 @@ public class AnimationsPlayer : MonoBehaviour
     {
         if (collisionInfo.collider.tag == "Obstacle")
         {
-            isColliding = 2;
+          
         }
     }
 
@@ -70,7 +110,6 @@ public class AnimationsPlayer : MonoBehaviour
     {
         if (collisionInfo.collider.tag == "Obstacle")
         {
-            isColliding = 0;
         }
     }
 
@@ -100,6 +139,7 @@ public class AnimationsPlayer : MonoBehaviour
         if (not_attacking)
         {
             swordCollider.enabled = false;
+            speed = 4f;
             if (Input.GetKey(KeyCode.W))
             {
                 if (Input.GetKey(KeyCode.H))
@@ -177,8 +217,6 @@ public class AnimationsPlayer : MonoBehaviour
 
         moveDirection *= speed * Time.deltaTime;
 
-        //if (isColliding == 1) moveDirection = Vector3.zero;
-        //else if (isColliding == 2) moveDirection = Vector3.zero;
         transform.position += moveDirection;
 
         rigidbody.MovePosition(rigidbody.position + moveDirection);
@@ -194,41 +232,66 @@ public class AnimationsPlayer : MonoBehaviour
     }
 
 
+    void die()
+    {
+        animator.SetBool("dead", true);
+        //animator.Play("dead");
+        //music.enabled = false;
+        dead = true;
+
+        Invoke("EliminateObject", 1.0f);
+    }
     void Update()
     {
-        speed = 2f;
+     
 
-        Movement();
+       if(HP_Min > 0)
+        {
 
-        if (Input.GetKey(KeyCode.V))
-        {
-            animator.Play("one_hand_attack1");
-            swordCollider.enabled = true;
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            animator.Play("one_hand_attack2");
-            swordCollider.enabled = true;
-        }
-        if (Input.GetKey(KeyCode.C))
-        {
-            animator.Play("two_hand_attack1");
-            swordCollider.enabled = true;
-        }
-        if (Input.GetKey(KeyCode.Z))
-        {
-            animator.Play("two_hand_attack2");
-            swordCollider.enabled = true;
-        }
-        if (Input.GetKey(KeyCode.B))
-        {
-            animator.Play("hurt");
-        }
-        if (Input.GetKey(KeyCode.N)) animator.Play("die");
+        
+            Movement();
+
+            if (Input.GetKey(KeyCode.V))
+            {
+                animator.Play("one_hand_attack1");
+                swordCollider.enabled = true;
+            }
+            if (Input.GetKey(KeyCode.X))
+            {
+                animator.Play("one_hand_attack2");
+                swordCollider.enabled = true;
+            }
+            if (Input.GetKey(KeyCode.C))
+            {
+                animator.Play("two_hand_attack1");
+                swordCollider.enabled = true;
+            }
+            if (Input.GetKey(KeyCode.Z))
+            {
+                animator.Play("two_hand_attack2");
+                swordCollider.enabled = true;
+            }
+            if (Input.GetKey(KeyCode.B))
+            {
+                animator.Play("hurt");
+            }
+            if (Input.GetKey(KeyCode.N)) animator.Play("die");
 
 
-       // barra.fillAmount = HP_Min / HP_Max;
-
+            // barra.fillAmount = HP_Min / HP_Max;
+        }
+       else
+        {
+            if (!dead)
+            {
+                animator.SetBool("dead", true);
+                animator.Play("die");
+                //music.enabled = false;
+                dead = true;
+                //Aparecer pantalla lose
+                //Invoke("EliminateObject", 1.0f);
+            }
+        }
 
     }
 

@@ -8,8 +8,6 @@ public class HitBoss : MonoBehaviour
     public int damage;
 
 
-
-
     void OnTriggerEnter(Collider coll) {
         if(coll.CompareTag("Player")){
             coll.GetComponent<AnimationsPlayer>().HP_Min -= damage;
