@@ -45,16 +45,16 @@ public class Boss : MonoBehaviour{
     }
 
     public void bossIA(){
-        Debug.Log("La distancia es: " + Vector3.Distance(transform.position, target.transform.position));
+        // Debug.Log("La distancia es: " + Vector3.Distance(transform.position, target.transform.position));
         if (Vector3.Distance(transform.position, target.transform.position) <30){
-            Debug.Log("Se cumple el if de bosIA");
+            //Debug.Log("Se cumple el if de bosIA");
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             point.transform.LookAt(target.transform.position);
             music.enabled = true;
             if(Vector3.Distance(transform.position, target.transform.position) > 1 && !isAtacking){
-                Debug.Log("el valor de rutina es: " + rutina);
+                //Debug.Log("el valor de rutina es: " + rutina);
                 switch(rutina)
                 {
                     case 0:  ///Walk
