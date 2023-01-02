@@ -6,14 +6,25 @@ using UnityEngine.UI;
 
 public class AnimationsPlayer : MonoBehaviour
 {
-
+   
+  
+     /*
+    void Update(){
+    if(Input.GetKey(KeyCode.S){
+        ThrowBomb();
+    }
+    void ThrowBomb(){
+        GameObject bomb = Instiantate(bombThrow,transform.position,transform.rotation);
+        Rightbody rb = grenade.GetComponent<Rigidbody>();
+        rb.addForce(transform.forward * throwForce),ForceMode.VelocityChange;
+    }
+    */
     public new Rigidbody rigidbody;
 
     [SerializeField] private float speed = 2f;
 
     public Animator animator;
     public float raycastDistance;
-
     public float health;
     private float sizeWeapon;
     // transform.localScale = new Vector3(2, transform.localScale.y, transform.localScale.z);
@@ -23,6 +34,9 @@ public class AnimationsPlayer : MonoBehaviour
     //public Image barra;
     private Collider swordCollider;
     public bool dead;
+    public float throwForce;
+    public GameObject bombThrow;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -250,7 +264,9 @@ public class AnimationsPlayer : MonoBehaviour
 
         
             Movement();
-
+            if (Input.GetKeyDown(KeyCode.J)){
+                ThrowBomb();
+            }
             if (Input.GetKey(KeyCode.V))
             {
                 animator.Play("one_hand_attack1");
@@ -295,7 +311,19 @@ public class AnimationsPlayer : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    void ThrowBomb()
+    {
+        Vector3 currentPosition = transform.position;
+        Vector3 posit = new Vector3(currentPosition.x, currentPosition.y + 2.0f, currentPosition.z);
+        GameObject bomb = Instantiate(bombThrow, posit, transform.rotation);
+        Debug.Log(bomb.name);
+        Debug.Log("Throw");
+        bomb.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        Rigidbody rb = bomb.GetComponent<Rigidbody>();
+        print(rb.mass);
+        rb.AddForce(transform.forward * throwForce,ForceMode.VelocityChange);
+    }
+        private void FixedUpdate()
     {
 
     }
