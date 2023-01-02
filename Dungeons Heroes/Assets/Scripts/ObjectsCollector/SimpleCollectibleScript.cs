@@ -5,9 +5,12 @@ using UnityEngine;
 public class SimpleCollectibleScript : MonoBehaviour {
 	public float rotationSpeed;
 
+	private float money;
+
 	public GameObject collectAudio;
 
 	public GameObject collectEffect;
+	[SerializeField] private TotalMoney totalMoney;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +31,7 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public void Collect()
 	{
+		totalMoney.updateMoney();
 		Instantiate(collectAudio, transform.position, Quaternion.identity);
 		Instantiate(collectEffect, transform.position, Quaternion.identity);
 		Destroy (gameObject);

@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
         //Agrupación de zonas 1
         if (z > 173){
             if(x > 54.5){
-                if (z > 208.5f && z > 191.5f){
+                if (z < 208.5f && z > 191.5f){
                     Debug.Log("Entro a Zone3");
                     animator.SetBool("Zone4", false);
                     animator.SetBool("Zone2", false);
@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
                 }
             }
             if(x < 54.5 && x > 33.5){
-                if (z < 208.5f && z > 191.5f){
+                if (z < 207.5f && z > 191.5f){
                     Debug.Log("Entro a Zone2");
                     animator.SetBool("Zone1", false);
                     animator.SetBool("Zone3", false);
@@ -40,90 +40,95 @@ public class CameraController : MonoBehaviour
                     animator.SetBool("Zone5", false);
                     animator.SetBool("Zone2", true);
                 }
-                else if (z > 208.5f){
+                else if (z > 207.5f){
                     Debug.Log("Entro a Zone1");
                     animator.SetBool("Zone2", false);
                     animator.SetBool("Zone1", true);
                 }
-                else if (z < 191.5f && z > 174){
-                    Debug.Log("Entro a Zone4");
+                else if (z < 190.5f && z > 174){
+                    Debug.Log("Entro a Zone6");
                     animator.SetBool("Zone2", false);
-                    animator.SetBool("Zone7", false);
-                    animator.SetBool("Zone4", true);
+                    animator.SetBool("Zona7", false);
+                    animator.SetBool("Zone6", true);
                 }
+            }
+            else if ( x < 33.5){
+                    Debug.Log("Entro a Zone5");
+                    animator.SetBool("Zone2", false);
+                    animator.SetBool("Zone5", true);
 
             }
         }
         //Agrupación de zonas 3
         else if (z < 142 ){
-            if(z < 126 && z > 108){
+            if(z < 125.5 && z > 109){
                 if (x > 54.5){
-                    Debug.Log("Entro a Zone14");
-                    animator.SetBool("Zone13", false);
-                    animator.SetBool("Zone14", true);
+                    Debug.Log("Entro a Zona14");
+                    animator.SetBool("Zona13", false);
+                    animator.SetBool("Zona14", true);
                 }
                 else if (x < 33.5){
-                    Debug.Log("Entro a Zone15");
-                    animator.SetBool("Zone13", false);
-                    animator.SetBool("Zone15", true);
+                    Debug.Log("Entro a Zona15");
+                    animator.SetBool("Zona13", false);
+                    animator.SetBool("Zona15", true);
                 }
                 else {
-                    Debug.Log("Entro a Zone13");
-                    animator.SetBool("Zone12", false);
-                    animator.SetBool("Zone14", false);
-                    animator.SetBool("Zone15", false);
-                    animator.SetBool("Zone15", true);                    
+                    Debug.Log("Entro a Zona13");
+                    animator.SetBool("Zona12", false);
+                    animator.SetBool("Zona14", false);
+                    animator.SetBool("Zona15", false);
+                    animator.SetBool("Zona13", true);                    
                 }
             }
-            else if (z > 126){
-                Debug.Log("Entro a Zone12");
-                animator.SetBool("Zone7", false);
-                animator.SetBool("Zone13", false);
-                animator.SetBool("Zone12", true);
+            else if (z > 125.5){
+                Debug.Log("Entro a Zona12");
+                animator.SetBool("Zona7", false);
+                animator.SetBool("Zona13", false);
+                animator.SetBool("Zona12", true);
             }
             else{
-                Debug.Log("Entro a Zone16");
-                animator.SetBool("Zone13", false);
-                animator.SetBool("Zone16", true);
+                Debug.Log("Entro a Zona16");
+                animator.SetBool("Zona13", false);
+                animator.SetBool("Zona16", true);
             }
             
         }
         //Agrupación de zonas 2
         else{
-            if (x > 51){
+            if (x > 50){
                 if (z > 158.6f){
-                    Debug.Log("Entro a Zone8");
-                    animator.SetBool("Zone7", false);
-                    animator.SetBool("Zone8", true);
+                    Debug.Log("Entro a Zona8");
+                    animator.SetBool("Zona7", false);
+                    animator.SetBool("Zona8", true);
                 }
                 else{
-                    Debug.Log("Entro a Zone10");
-                    animator.SetBool("Zone7", false);
-                    animator.SetBool("Zone10", true);
+                    Debug.Log("Entro a Zona10");
+                    animator.SetBool("Zona7", false);
+                    animator.SetBool("Zona10", true);
                 }
             }
             else if ( x < 38){
                 if (z > 158.6f){
-                    Debug.Log("Entro a Zone9");
-                    animator.SetBool("Zone7", false);
-                    animator.SetBool("Zone9", true);
+                    Debug.Log("Entro a Zona9");
+                    animator.SetBool("Zona7", false);
+                    animator.SetBool("Zona9", true);
                 }
                 else{
-                    Debug.Log("Entro a Zone11");
-                    animator.SetBool("Zone7", false);
-                    animator.SetBool("Zone11", true);
+                    Debug.Log("Entro a Zona11");
+                    animator.SetBool("Zona7", false);
+                    animator.SetBool("Zona11", true);
                 }
 
             }
             else{
-                Debug.Log("Entro a Zone7");
+                Debug.Log("Entro a Zona7");
                 animator.SetBool("Zone6", false);
-                animator.SetBool("Zone8", false);
-                animator.SetBool("Zone9", false);
-                animator.SetBool("Zone10", false);
-                animator.SetBool("Zone11", false);
-                animator.SetBool("Zone12", false);
-                animator.SetBool("Zone7", true);
+                animator.SetBool("Zona8", false);
+                animator.SetBool("Zona9", false);
+                animator.SetBool("Zona10", false);
+                animator.SetBool("Zona11", false);
+                animator.SetBool("Zona12", false);
+                animator.SetBool("Zona7", true);
             }
         }
     }

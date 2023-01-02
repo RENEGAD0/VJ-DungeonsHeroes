@@ -139,7 +139,7 @@ public class AnimationsPlayer : MonoBehaviour
         if (not_attacking)
         {
             swordCollider.enabled = false;
-            speed = 4f;
+            speed = 8f;
             if (Input.GetKey(KeyCode.W))
             {
                 if (Input.GetKey(KeyCode.H))
@@ -243,6 +243,7 @@ public class AnimationsPlayer : MonoBehaviour
     }
     void Update()
     {
+
      
 
        if(HP_Min > 0)

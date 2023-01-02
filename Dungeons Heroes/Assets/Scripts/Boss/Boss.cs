@@ -29,7 +29,7 @@ public class Boss : MonoBehaviour{
     public GameObject point;
     public List<GameObject> pool2 = new List<GameObject>();
     /////////////
-    public int fase = 1;
+    public int fase = 0;
     public float HP_Min;
     public float HP_Max;
     public AudioSource music;
@@ -86,7 +86,7 @@ public class Boss : MonoBehaviour{
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
                         range.GetComponent<CapsuleCollider>().enabled = false;
                     break;
-                    case 3:
+                    case 3: //Fiireball
                         if(fase == 2){
                             animator.SetBool("walk", false);
                             animator.SetBool("run", false);
@@ -103,13 +103,11 @@ public class Boss : MonoBehaviour{
 
                 }
             }
-
-
         }
     }
 
     
-    
+
     public void FinalAnimation(){
         rutina = 0;
         animator.SetBool("atack", false);
@@ -175,9 +173,15 @@ public class Boss : MonoBehaviour{
     }
 
     public void Alive(){
-        if (HP_Min < 500){
-            fase = 2;
+        //
+        if (HP_Min < 666){
+            fase = 1;
             tiempo_rutina = 1;
+        }
+        if (HP_Min < 333){
+            fase = 2;
+            tiempo_rutina = 0.75f;
+            speed = speed * 1.25f;
         }
         bossIA();
         if(isFlamethrowing){

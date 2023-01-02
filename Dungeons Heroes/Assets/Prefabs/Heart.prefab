@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5271801228708524480}
   - component: {fileID: 5271801228708524511}
   - component: {fileID: 5271801228708524510}
-  - component: {fileID: 5271801228708524509}
   - component: {fileID: 5271801228708524507}
+  - component: {fileID: 2120115271973947512}
   m_Layer: 2
   m_Name: Heart
   m_TagString: Untagged
@@ -85,21 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5271801228708524509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5271801228708524506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1315172d7ad53634e952f7d8f3c02048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 400
-  collectAudio: {fileID: 8265320141962233384, guid: cbad3dfab445ea744ab40482ee9b9d64, type: 3}
-  collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
 --- !u!135 &5271801228708524507
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -113,3 +98,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25295
   m_Center: {x: -0.00000007071872, y: 0.12511864, z: 0.000000003867206}
+--- !u!114 &2120115271973947512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271801228708524506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc10b4990500f2944af607ad9a447e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 400
+  collectAudio: {fileID: 8265320141962233384, guid: cbad3dfab445ea744ab40482ee9b9d64, type: 3}
+  collectEffect: {fileID: 1702657300312902, guid: 67f6867d274fabb43813190c4774f5a5, type: 3}
