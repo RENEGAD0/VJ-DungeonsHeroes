@@ -11,6 +11,7 @@ public class LeverActivation : MonoBehaviour
 
     [SerializeField] private GameObject DeleteDoor;
 
+    public Animator animator;
 
     private void OnTriggerEnter(Collider collision) {
         if (collision.gameObject.CompareTag("Player")){
@@ -29,13 +30,16 @@ public class LeverActivation : MonoBehaviour
         // Start is called before the first frame update
     void Start()
     {
-        
+     animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if(isPlayerInRange == true && Input.GetButtonDown("Fire1")){
+            animator.SetTrigger("Actived");
+            animator.SetBool("run", false);
             ChestAparition.SetActive(true);
             DeleteDoor.SetActive(false);
         }
