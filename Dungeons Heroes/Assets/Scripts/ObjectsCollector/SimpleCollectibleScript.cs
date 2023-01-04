@@ -25,13 +25,13 @@ public class SimpleCollectibleScript : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player") {
-			Collect ();
+			Collect();
 		}
 	}
 
 	public void Collect()
 	{
-		//totalMoney.updateMoney();
+		totalMoney.updateMoney();
 		Instantiate(collectAudio, transform.position, Quaternion.identity);
 		Instantiate(collectEffect, transform.position, Quaternion.identity);
 		Destroy (gameObject);
