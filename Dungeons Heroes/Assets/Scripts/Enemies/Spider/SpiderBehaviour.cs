@@ -2,54 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpiderBehaviour : MonoBehaviour
+public class SpiderBehaviour : Enemy
 {
-    ////////////////////////////  Codigo enemigo base
-    public new Rigidbody rigidbody;
-    public int rutina;
-    public Animator animator;
-    public Quaternion angle;
-    public GameObject target;
-    public Rango range;
-    public float speed;
 
 
-    /////////////
-    public float HP_Min;
-    public float HP_Max;
-    //public AudioSource music;
-    public bool hit = false;
-    public bool dead;
-    //public Image hpBar;
-
-
-    void Start()
+    protected override void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
-        target = GameObject.Find("Player");
+        base.Start();
     }
 
-    bool AnimatorIsPlaying()
+
+    protected override bool AnimatorIsPlaying()
     {
-        return animator.GetCurrentAnimatorStateInfo(0).length > 0;
+        return base.AnimatorIsPlaying();
     }
 
-    bool AnimatorIsPlaying(string stateName)
+    protected override bool AnimatorIsPlaying(string stateName)
     {
         return AnimatorIsPlaying() && animator.GetCurrentAnimatorStateInfo(0).IsName(stateName);
     }
-    /*
-    IEnumerator Timer(float waitTime)
-    {
-        // Wait for the specified amount of time
-        yield return new WaitForSeconds(waitTime);
 
-        // Execute the action
-        hit = false;
-        Debug.Log("Timer expired!");
+    void OnTriggerEnter(Collider collid)
+    {
+
+        if (collid.tag == "Obstacle")
+        {
+            rigidbody.isKinematic = true;
+            Invoke("KinematicF", 0.1f);
+        }
+        if (!entered)
+        {
+
+            if (collid.name == "Player" && !playerScript.invencible)
+            {
+                playerScript.HP_Min -= 10;
+                if (playerScript.dead == false)
+                {
+                    playerScript.animator.Play("hurt");
+                    Vector3 forceDirection = transform.forward;
+                    float forceMagnitude = 600.0f;
+                    // rigidbody.velocity = forceDirection;
+                    playerScript.rigidbody.AddForce(forceDirection * forceMagnitude, ForceMode.Impulse);
+                }
+            }
+            else if (collid.name == "sword")
+            {
+                Debug.Log(collid.name);
+                entered = true;
+                Invoke("Delay", 1.0f);
+                HP_Min -= 25;
+                rutina = 1;
+            }
+
+        }
     }
-*/
+    /*
     void OnCollisionEnter(Collision collisionInfo)
     {
         if (collisionInfo.collider.tag == "Player")
@@ -84,92 +91,74 @@ public class SpiderBehaviour : MonoBehaviour
             if(!found) doDmg();
         }
     }
-
-
-    public void doDmg()
+    */
+    protected override void bossIA()
     {
-        HP_Min -= 10;
-        Debug.Log("hp:MIn: " + HP_Min);
-       // rutina = 1;
-    }
-
-    public void bossIA()
-    {
+        base.bossIA();
         if (Vector3.Distance(transform.position, target.transform.position) < 30)
         {
             var lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             //music.enabled = true;
-            
-           
+
+
             if (Vector3.Distance(transform.position, target.transform.position) > 1)
             {
-                if (/*rutina != 1 &&*/ Vector3.Distance(transform.position, target.transform.position) < 3) rutina = 2;
+                if (rutina != 1 && Vector3.Distance(transform.position, target.transform.position) < 2.8) rutina = 2;
                 else
                 {
-                    //if(rutina !=1)
-                    rutina = 0;
+                    if (rutina != 1) rutina = 0;
                 }
                 switch (rutina)
                 {
                     case 0:  ///Walk
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-                        animator.SetBool("walk", true);
-                        animator.SetBool("take_damage", false);
-                        animator.SetBool("attack", false);
-                        if (! AnimatorIsPlaying("Attack1")) transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                        animator.Play("Walk");
+                        if (!AnimatorIsPlaying("Attack1")) transform.Translate(Vector3.forward * speed * Time.deltaTime);
                         break;
-                        /*
+
                     case 1: //TakeDamage
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-                        animator.SetBool("take_damage", true);
-                        animator.SetBool("walk", false);
-                        animator.SetBool("attack", false);
+                        animator.Play("TakeDamage");
+                        move_force();
+                        Invoke("ChangeAnimation", 0.5f);
                         //if(transform.rotation == rotation) transform.Translate(Vector3.forward * speed*2 * Time.deltaTime);
                         transform.Translate(Vector3.forward * speed * 2 * Time.deltaTime);
                         break;
-                ^*/
+
                     case 2: //Attack
-                        animator.SetBool("take_damage", false);
-                        animator.SetBool("walk", false);
-                        animator.SetBool("attack", true);
+                        animator.Play("Attack1");
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
                         break;
 
                 }
             }
-
-
         }
+       // else animator.Play("Idle");
     }
 
 
-    public void EliminateObject()
+
+    protected override void move_force()
     {
-        //GetComponent<MeshRenderer>().enabled = false;
-        Destroy(gameObject);
+        base.move_force();
+    }
+    protected override void ChangeAnimation()
+    {
+        base.ChangeAnimation();
+    }
+    protected override void EliminateObject()
+    {
+        base.EliminateObject();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         //hpBar.fillAmount = HP_Min / HP_Max;
-        
-        if (HP_Min > 0 ) bossIA();
-        else
-        {
-            if (HP_Min <= 0) dead = true;
-            if (dead)
-            {
-                animator.SetBool("dead",true);
-                 // animator.Play("dead");
-                //music.enabled = false;
-                dead = true;
-              
-                Invoke("EliminateObject", 2.0f);
-            }
-        }
+        base.Update();
+
 
     }
 }

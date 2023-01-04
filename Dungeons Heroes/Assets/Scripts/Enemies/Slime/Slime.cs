@@ -2,46 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : MonoBehaviour
-{
-    public new Rigidbody rigidbody;
-    public int rutina;
-    public Animator animator;
-    public Quaternion angle;
-    public GameObject target;
-    public Rango range;
-    public float speed;
+public class Slime : Enemy
+{   
+    protected override void Delay()
+    {
+        base.Delay();
+    }
+
+    void KinematicF()
+    {
+        rigidbody.isKinematic = false;
+    }
 
 
-    /////////////
-    public float HP_Min;
-    public float HP_Max;
-    //public AudioSource music;
-    public bool hit = false;
-    public bool dead;
-    //public Image hpBar;
+    void OnTriggerEnter(Collider collid)
+    {
+        if (collid.tag == "Obstacle")
+        {
+            rigidbody.isKinematic = true;
+            Invoke("KinematicF", 0.1f);
+        }
 
+        if (!entered)
+        {
+            if (collid.name == "Player" && !playerScript.invencible)
+            {
+                playerScript.HP_Min -= 10;
+                if (playerScript.dead == false)
+                {
+                    playerScript.animator.Play("hurt");
+                    Vector3 forceDirection = transform.forward;
+                    float forceMagnitude = 600.0f;
+                    // rigidbody.velocity = forceDirection;
+                    playerScript.rigidbody.AddForce(forceDirection * forceMagnitude, ForceMode.Impulse);
+                }
+            }
+            else if (collid.name == "sword")
+            {
+                Debug.Log(collid.name);
+                entered = true;
+                Invoke("Delay", 1.0f);
+                HP_Min -= 25;
+                rutina = 1;
+            }
+        }
+    }
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
-        target = GameObject.Find("Player");
+        base.Start();
     }
 
-    bool AnimatorIsPlaying()
+    protected override bool AnimatorIsPlaying()
     {
-        return animator.GetCurrentAnimatorStateInfo(0).length > 0;
+        return base.AnimatorIsPlaying();
     }
 
-    bool AnimatorIsPlaying(string stateName)
+    protected override bool AnimatorIsPlaying(string stateName)
     {
         return AnimatorIsPlaying() && animator.GetCurrentAnimatorStateInfo(0).IsName(stateName);
     }
 
-    void bossIA()
+    protected override void bossIA()
     {
+        base.bossIA();
         if (Vector3.Distance(transform.position, target.transform.position) < 10)
         {
             var lookPos = target.transform.position - transform.position;
@@ -52,11 +77,10 @@ public class Slime : MonoBehaviour
 
             if (Vector3.Distance(transform.position, target.transform.position) > 1)
             {
-                if (/*rutina != 1 &&*/ Vector3.Distance(transform.position, target.transform.position) < 1.5) rutina = 2;
+                if (rutina != 1 && Vector3.Distance(transform.position, target.transform.position) < 1.5) rutina = 2;
                 else
                 {
-                    //if(rutina !=1)
-                    rutina = 0;
+                    if(rutina !=1) rutina = 0;
                 }
                 switch (rutina)
                 {
@@ -65,16 +89,14 @@ public class Slime : MonoBehaviour
                         animator.Play("WalkFWD");
                         if (!AnimatorIsPlaying("Attack01")) transform.Translate(Vector3.forward * speed * Time.deltaTime);
                         break;
-                    /*
-                case 1: //TakeDamage
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
-                    animator.SetBool("take_damage", true);
-                    animator.SetBool("walk", false);
-                    animator.SetBool("attack", false);
-                    //if(transform.rotation == rotation) transform.Translate(Vector3.forward * speed*2 * Time.deltaTime);
-                    transform.Translate(Vector3.forward * speed * 2 * Time.deltaTime);
-                    break;
-            ^*/
+                     case 1: //TakeDamage
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
+                        animator.Play("GetHit");
+                        move_force();
+                        Invoke("ChangeAnimation", 0.4f);
+                        //if(transform.rotation == rotation) transform.Translate(Vector3.forward * speed*2 * Time.deltaTime);
+                        transform.Translate(Vector3.forward * speed * 2 * Time.deltaTime);
+                        break;
                     case 2: //Attack
                         animator.Play("Attack01");
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
@@ -86,31 +108,26 @@ public class Slime : MonoBehaviour
         else animator.Play("IdleBattle");
     }
 
-    public void EliminateObject()
+    protected override void move_force()
     {
-        //GetComponent<MeshRenderer>().enabled = false;
-        Destroy(gameObject);
+        base.move_force();
+    }
+    protected override void ChangeAnimation()
+    {
+        base.ChangeAnimation();
+    }
+    protected override void EliminateObject()
+    {
+        base.EliminateObject();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         //hpBar.fillAmount = HP_Min / HP_Max;
+        base.Update();
 
-        if (HP_Min > 0) bossIA();
-        else
-        {
-            if (HP_Min <= 0) dead = true;
-            if (dead)
-            {
-                //animator.SetBool("dead", true);
-                 animator.Play("Die");
-                //music.enabled = false;
-                //dead = true;
-
-                Invoke("EliminateObject", 2.0f);
-            }
-        }
 
     }
+
 }

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 851392088944920587}
   - component: {fileID: 6715126858110603889}
   - component: {fileID: 2154541716304048425}
-  - component: {fileID: 2364109392145044712}
+  - component: {fileID: 9039864051010858071}
+  - component: {fileID: 4854826972309972383}
   m_Layer: 0
   m_Name: Oot_Bomb
   m_TagString: Untagged
@@ -70,7 +71,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0118114
   m_Center: {x: 0.18073805, y: 0, z: -0.16773501}
---- !u!54 &2364109392145044712
+--- !u!114 &9039864051010858071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43646439205868209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d122564bcf1466745b99bd6dc94a31cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionParticle: {fileID: 1354163695502813198, guid: 4c6ccde32d740814db1475f13f15889e, type: 3}
+--- !u!54 &4854826972309972383
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

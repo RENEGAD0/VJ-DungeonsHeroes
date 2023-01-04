@@ -891,9 +891,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8257700252370349330}
+  - component: {fileID: 1376073304}
+  - component: {fileID: 1376073305}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -914,6 +916,32 @@ Transform:
   m_Father: {fileID: 8257902505887270788}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1376073304
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254686499136819280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7159752
+  m_Center: {x: -0.48438194, y: 0.41825044, z: -0.03948617}
+--- !u!65 &1376073305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254686499136819280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5011897, y: 1.4094, z: 0.9858916}
+  m_Center: {x: -0.42804193, y: 0.20470037, z: -0.0070542097}
 --- !u!1 &8254724825247899542
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,9 +987,10 @@ GameObject:
   - component: {fileID: 8257902505887270788}
   - component: {fileID: 8348197833128739414}
   - component: {fileID: 8253013647669047514}
+  - component: {fileID: 2011622402}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1022,10 +1051,30 @@ MonoBehaviour:
   target: {fileID: 0}
   range: {fileID: 0}
   speed: 1
+  coin: {fileID: 7926270841216885926, guid: a90c41fd189981448b417c4bf1c361b6, type: 3}
+  heart: {fileID: 5271801228708524506, guid: dfaa644201f5a434fad0ec6fd8feafc9, type: 3}
+  entered: 0
   HP_Min: 100
   HP_Max: 100
   hit: 0
   dead: 0
+  playerScript: {fileID: 0}
+--- !u!54 &2011622402
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254770655488152916}
+  serializedVersion: 2
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!1 &8254775475490909784
 GameObject:
   m_ObjectHideFlags: 0

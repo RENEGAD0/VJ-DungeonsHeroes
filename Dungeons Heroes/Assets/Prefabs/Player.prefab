@@ -637,7 +637,7 @@ Transform:
   m_GameObject: {fileID: 4478745814054523320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.92, y: 1.03, z: -3.02}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2858004169744834054}
@@ -658,9 +658,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &1228748165329109816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -843,6 +843,9 @@ MonoBehaviour:
   dead: 0
   throwForce: 10
   bombThrow: {fileID: 0}
+  sword: {fileID: 0}
+  explosion: {fileID: 0}
+  swordScript: {fileID: 0}
 --- !u!1 &4506365573027137545
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +889,7 @@ GameObject:
   - component: {fileID: 8348899033398362821}
   - component: {fileID: 7331693142877301671}
   - component: {fileID: 2153312592334596855}
+  - component: {fileID: 1044101281}
   m_Layer: 0
   m_Name: sword
   m_TagString: Untagged
@@ -969,8 +973,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08011922, y: 0.023872392, z: 0.019373717}
-  m_Center: {x: -0.03992766, y: 0.0070086787, z: -0.008135928}
+  m_Size: {x: 0.04172158, y: 0.010257835, z: 0.007866111}
+  m_Center: {x: -0.055683125, y: 0.012417899, z: -0.013889051}
+--- !u!114 &1044101281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598914393721621884}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda3132aeccef7343a8cdff1bfc6ddf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4673153676100914127
 GameObject:
   m_ObjectHideFlags: 0

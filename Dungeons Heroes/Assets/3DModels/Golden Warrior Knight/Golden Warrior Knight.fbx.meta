@@ -37,7 +37,7 @@ ModelImporter:
       takeName: walk
       internalID: -3419257869308726280
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 84
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -182,7 +182,7 @@ ModelImporter:
       takeName: hurt
       internalID: 2963219463598164401
       firstFrame: 780
-      lastFrame: 811
+      lastFrame: 812
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -205,7 +205,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 780
     - serializedVersion: 16
       name: one_hand_attack1
       takeName: one_hand_attack1
