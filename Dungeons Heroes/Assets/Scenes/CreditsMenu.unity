@@ -950,8 +950,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.5816, y: -790}
-  m_SizeDelta: {x: 775.4523, y: 927.7107}
+  m_AnchoredPosition: {x: -85, y: -790}
+  m_SizeDelta: {x: 1076.9149, y: 927.7107}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &2080716043
 Animation:
@@ -993,8 +993,7 @@ MonoBehaviour:
     \t\t RAUL PARRA\nCAMARAS:\t\tRAUL PARRA\nJUGADOR:\t\tISSLAM  BENALI\nENEMIGO1:\t\tISSLAM 
     BENALI\nENEMIGO2:\tISSLAM  BENALI\nENEMIGO3:\tISSLAM  BENALI\nENEMIGO4:\tISSLAM 
     BENALI\nBOSS:\t\t\tRAUL PARRA\nNPCS:\t\t\tRAUL PARRA\nSONIDO:\t\tRAUL PARRA\nMUSICA:\t\tRAUL
-    PARRA\nMENUS:\t\tRAUL PARRA\nCONTROLES:\tISSLAM  BENALI\nTECLAS\nESPECIALES:\tISSLAM 
-    BENALI\nOBJETOS:\t\tRAUL PARRA\n"
+    PARRA\nMENUS:\t\tRAUL PARRA\nCONTROLES:\tISSLAM  BENALI\nOBJETOS:\t\tRAUL PARRA\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d3298ed26556eb40b838f10927efc5b, type: 2}
   m_sharedMaterial: {fileID: -8834864013799261417, guid: 9d3298ed26556eb40b838f10927efc5b, type: 2}
@@ -1021,14 +1020,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 16
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

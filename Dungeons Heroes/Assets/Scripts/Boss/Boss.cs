@@ -16,7 +16,9 @@ public class Boss : MonoBehaviour{
     public Rango range;
     public GameObject[] hit;
     public int hit_Select;
-     public float speed;
+    public float speed;
+
+    public bool moreSpeed;
     ///////////////////////////////   Lanzallamas
     public bool isFlamethrowing;
     public List<GameObject> pool= new List<GameObject>();
@@ -42,6 +44,7 @@ public class Boss : MonoBehaviour{
     {
         animator = GetComponent<Animator>();
         target = GameObject.Find("Player");
+        moreSpeed = false;
     }
 
     public void bossIA(){
@@ -87,7 +90,7 @@ public class Boss : MonoBehaviour{
                         range.GetComponent<CapsuleCollider>().enabled = false;
                     break;
                     case 3: //Fiireball
-                        if(fase == 2){
+                        if(fase == 1){
                             animator.SetBool("walk", false);
                             animator.SetBool("run", false);
                             animator.SetBool("atack", true);
@@ -172,6 +175,7 @@ public class Boss : MonoBehaviour{
         obj.transform.rotation = point.transform.rotation;
     }
 
+
     public void Alive(){
         //
         if (HP_Min < 666){
@@ -181,7 +185,10 @@ public class Boss : MonoBehaviour{
         if (HP_Min < 333){
             fase = 2;
             tiempo_rutina = 0.75f;
-            speed = speed * 1.25f;
+            if (!moreSpeed){
+                moreSpeed = true;
+                speed = speed * 1.25f;
+            }
         }
         bossIA();
         if(isFlamethrowing){
