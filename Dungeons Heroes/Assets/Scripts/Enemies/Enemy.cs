@@ -11,9 +11,20 @@ public class Enemy : MonoBehaviour
     public GameObject target;
     public Rango range;
     public float speed;
+    public bool hurt = false;
 
     public GameObject coin;
     public GameObject heart;
+
+    public AudioClip attack_sound;
+    public AudioClip defend_sound;
+    public AudioClip hurt_sound;
+    public AudioClip dead_sound;
+
+    public AudioSource attackAudioSource;
+    public AudioSource defendAudioSource2;
+    public AudioSource audioSourceHurt;
+    public AudioSource audioSourceDie;
 
     bool drop = false;
 
@@ -64,6 +75,7 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void ChangeAnimation()
     {
+        hurt = false;
         rutina = 0;
         rigidbody.velocity = Vector3.zero;
     }
@@ -93,17 +105,12 @@ public class Enemy : MonoBehaviour
         if (HP_Min > 0) bossIA();
         else
         {
-            if (HP_Min <= 0) dead = true;
-            if (dead)
-            {
-                //animator.SetBool("dead", true);
-                animator.Play("Die");
-                //music.enabled = false;
-                //dead = true;
-
-                Invoke("EliminateObject", 2.0f);
-            }
+            animator.Play("Die");
+            if(!dead) audioSourceDie.PlayOneShot(dead_sound, 0.3F);
+            dead = true ;
+            Invoke("EliminateObject", 2.0f);
         }
+      
 
     }
 }

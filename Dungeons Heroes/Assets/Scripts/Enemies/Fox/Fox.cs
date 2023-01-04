@@ -33,6 +33,7 @@ public class Fox : Enemy
                 if (playerScript.dead == false)
                 {
                     playerScript.animator.Play("hurt");
+                    playerScript.audioSourceHurt.PlayOneShot(playerScript.hurt_sound, 0.3F);
                     Vector3 forceDirection = transform.forward;
                     float forceMagnitude = 600.0f;
                     // rigidbody.velocity = forceDirection;
@@ -107,11 +108,13 @@ public class Fox : Enemy
                     
                     case 1: //TakeDamage
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
+                        if (!hurt)
+                        {
+                            audioSourceHurt.PlayOneShot(hurt_sound, 0.3F);
+                            hurt = true;
+                        }
                         animator.Play("GetHit");
                         move_force();
-                        
-                        //if(transform.rotation == rotation) transform.Translate(Vector3.forward * speed*2 * Time.deltaTime);
-                        //transform.Translate(Vector3.forward * speed * 2 * Time.deltaTime);
                         Invoke("ChangeAnimation", 0.5f);
                         break;
                     case 2: //Attack

@@ -22,6 +22,12 @@ public class SpiderBehaviour : Enemy
         return AnimatorIsPlaying() && animator.GetCurrentAnimatorStateInfo(0).IsName(stateName);
     }
 
+    void KinematicF()
+    {
+        rigidbody.isKinematic = false;
+    }
+
+
     void OnTriggerEnter(Collider collid)
     {
 
@@ -39,6 +45,7 @@ public class SpiderBehaviour : Enemy
                 if (playerScript.dead == false)
                 {
                     playerScript.animator.Play("hurt");
+                    playerScript.audioSourceHurt.PlayOneShot(playerScript.hurt_sound, 0.3F);
                     Vector3 forceDirection = transform.forward;
                     float forceMagnitude = 600.0f;
                     // rigidbody.velocity = forceDirection;
@@ -120,6 +127,11 @@ public class SpiderBehaviour : Enemy
 
                     case 1: //TakeDamage
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
+                        if (!hurt)
+                        {
+                            audioSourceHurt.PlayOneShot(hurt_sound, 0.3F);
+                            hurt = true;
+                        }
                         animator.Play("TakeDamage");
                         move_force();
                         Invoke("ChangeAnimation", 0.5f);

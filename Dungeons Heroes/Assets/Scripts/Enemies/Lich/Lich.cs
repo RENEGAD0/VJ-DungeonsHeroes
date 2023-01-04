@@ -62,7 +62,9 @@ public class Lich : Enemy
                 playerScript.HP_Min -= 10;
                 if (playerScript.dead == false)
                 {
+
                     playerScript.animator.Play("hurt");
+                    playerScript.audioSourceHurt.PlayOneShot(playerScript.hurt_sound, 0.3F);
                     Vector3 forceDirection = transform.forward;
                     float forceMagnitude = 600.0f;
                     // rigidbody.velocity = forceDirection;
@@ -112,7 +114,7 @@ public class Lich : Enemy
                 {
                     rutina = 3;
                 }
-                else if (rutina != 1 && Vector3.Distance(transform.position, target.transform.position) < 7)
+                else if (rutina != 1 && Vector3.Distance(transform.position, target.transform.position) < 11)
                 {
                     if(!delay) rutina = 2;
                     else
@@ -133,6 +135,11 @@ public class Lich : Enemy
                         break;
                     case 1: //TakeDamage
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
+                        if (!hurt)
+                        {
+                            audioSourceHurt.PlayOneShot(hurt_sound, 0.3F);
+                            hurt = true;
+                        }
                         animator.Play("GetHit");
                         move_force();
                         Invoke("ChangeAnimation", 0.8f);
@@ -146,7 +153,7 @@ public class Lich : Enemy
                             Invoke("ThrowBall", 0.1f);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
                             delay = true;
-                            Invoke("StopDelay", 3.0f);
+                            Invoke("StopDelay", 2.5f);
                         }
                         break;
                     case 3: //Attack
