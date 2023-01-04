@@ -31,7 +31,7 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public void Collect()
 	{
-		totalMoney.updateMoney();
+		//totalMoney.updateMoney();
 		Instantiate(collectAudio, transform.position, Quaternion.identity);
 		Instantiate(collectEffect, transform.position, Quaternion.identity);
 		Destroy (gameObject);

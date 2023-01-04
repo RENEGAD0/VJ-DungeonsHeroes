@@ -199,6 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8937541842978907868}
+  - component: {fileID: 1212174558}
   m_Layer: 0
   m_Name: Staff
   m_TagString: Untagged
@@ -221,6 +222,19 @@ Transform:
   m_Father: {fileID: 8937440180881416514}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1212174558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8943118937929131678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 17.362965, y: 293.61258, z: 9.1516695}
+  m_Center: {x: 0.35653776, y: 68.62285, z: -0.5214339}
 --- !u!1 &8943137355130664412
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +441,8 @@ GameObject:
   - component: {fileID: 8937579800837636954}
   - component: {fileID: 9028035060776380332}
   - component: {fileID: 8941962610938014117}
+  - component: {fileID: 1428894282}
+  - component: {fileID: 1428894278}
   m_Layer: 0
   m_Name: Lich
   m_TagString: Untagged
@@ -490,13 +506,45 @@ MonoBehaviour:
   target: {fileID: 0}
   range: {fileID: 0}
   speed: 1
+  coin: {fileID: 7926270841216885926, guid: a90c41fd189981448b417c4bf1c361b6, type: 3}
+  heart: {fileID: 5271801228708524506, guid: dfaa644201f5a434fad0ec6fd8feafc9, type: 3}
+  entered: 0
   HP_Min: 100
   HP_Max: 100
   hit: 0
   dead: 0
-  fireBall: {fileID: 0}
-  point: {fileID: 0}
-  pool2: []
+  playerScript: {fileID: 0}
+  electricBall: {fileID: 0}
+  delay: 0
+--- !u!54 &1428894282
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8943425960413925538}
+  serializedVersion: 2
+  m_Mass: 25
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
+--- !u!65 &1428894278
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8943425960413925538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.16845, y: 1.9035805, z: 1}
+  m_Center: {x: -0.084225, y: 0.9642778, z: 0}
 --- !u!1 &8943447200543378704
 GameObject:
   m_ObjectHideFlags: 0
