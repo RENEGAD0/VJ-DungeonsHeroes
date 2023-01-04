@@ -13,7 +13,7 @@ public class TotalMoney : MonoBehaviour
     void Start()
     {
     money = 0;
-     text = GetComponent<TextMeshProUGUI>();   
+    text = GetComponent<TextMeshProUGUI>();   
     }
 
     public void updateMoney(){
