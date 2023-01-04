@@ -11,11 +11,11 @@ public class StartMenu : MonoBehaviour
     }
 
     public void Instructions(){
-    SceneManager.LoadScene(4);
+    SceneManager.LoadScene(2);
     }
 
     public void Credits(){
-    SceneManager.LoadScene(5);
+    SceneManager.LoadScene(3);
     }
     public void Quit(){
         Debug.Log("Salir...");
