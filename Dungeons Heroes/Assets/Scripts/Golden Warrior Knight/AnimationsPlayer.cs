@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class AnimationsPlayer : MonoBehaviour
@@ -37,6 +38,10 @@ public class AnimationsPlayer : MonoBehaviour
     public bool hurt = false;
     public bool bomb_usable;
 
+    public float money;
+
+    public TextMeshProUGUI moneyText;
+
     public AudioClip sword_sound;
     public AudioClip run_sound;
     public AudioClip move_sound;
@@ -70,6 +75,8 @@ public class AnimationsPlayer : MonoBehaviour
   
     void Start()
     {
+        //moneyText = GetComponent<TextMeshProUGUI>(); 
+        money = 0f;
         key1Getted = false;
         coll = GetComponent<Collider>();
         animator = GetComponent<Animator>();
@@ -284,6 +291,7 @@ public class AnimationsPlayer : MonoBehaviour
     }
     void Update()
     {
+        moneyText.text = money.ToString("0");
         if (!AnimatorIsPlaying("walk"))
         {
             audioSourceMove.Stop();
@@ -381,6 +389,10 @@ public class AnimationsPlayer : MonoBehaviour
     }
     void deadNow(){
         canvas.Die();
+    }
+
+    public void updateMoney(){
+        ++money;
     }
 
     void ThrowBomb()

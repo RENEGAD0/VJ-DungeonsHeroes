@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleCollectibleScript : MonoBehaviour {
+public class ScriptMoney : MonoBehaviour {
 	public float rotationSpeed;
 
 	private float money;
@@ -10,11 +10,11 @@ public class SimpleCollectibleScript : MonoBehaviour {
 	public GameObject collectAudio;
 
 	public GameObject collectEffect;
-	[SerializeField] private TotalMoney totalMoney;
+	[SerializeField] private AnimationsPlayer playerController;
 
 	// Use this for initialization
 	void Start () {
-		
+		playerController = GameObject.Find("Player").GetComponent<AnimationsPlayer>();
 	}
 	
 	// Update is called once per frame
@@ -31,7 +31,7 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public void Collect()
 	{
-		totalMoney.updateMoney();
+		playerController.updateMoney();
 		Instantiate(collectAudio, transform.position, Quaternion.identity);
 		Instantiate(collectEffect, transform.position, Quaternion.identity);
 		Destroy (gameObject);
