@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  kindOfDamage: fireBall
+  target: {fileID: 0}
+  playerScript: {fileID: 0}
 --- !u!114 &1603442492670154120
 MonoBehaviour:
   m_ObjectHideFlags: 0

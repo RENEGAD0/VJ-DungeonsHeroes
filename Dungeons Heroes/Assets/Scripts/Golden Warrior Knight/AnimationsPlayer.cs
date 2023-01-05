@@ -30,7 +30,6 @@ public class AnimationsPlayer : MonoBehaviour
     public swordCollider swordScript;
     public bool invencible = false;
     public Collider coll;
-    private float HP_Min_aux = 100;
     private float sword_x, sword_y, sword_z;
     public bool throweable;
     public bool walking = false;
@@ -75,7 +74,7 @@ public class AnimationsPlayer : MonoBehaviour
   
     void Start()
     {
-        //moneyText = GetComponent<TextMeshProUGUI>(); 
+        //moneyText = GameObject.Find("Coin").GetComponent<TextMeshProUGUI>(); 
         money = 0f;
         key1Getted = false;
         coll = GetComponent<Collider>();

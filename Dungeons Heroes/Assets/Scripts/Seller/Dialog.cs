@@ -48,6 +48,7 @@ public class Dialog : MonoBehaviour
         else{
             healSound.SetActive(true);
             playerController.RestartHeal();
+            playerController.bomb_usable=true;
             firstdialogue = false;
             dialogueStart = false;
             dialoguePanel.SetActive(false);
