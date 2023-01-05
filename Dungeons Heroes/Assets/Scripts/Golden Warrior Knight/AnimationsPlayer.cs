@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class AnimationsPlayer : MonoBehaviour
@@ -47,6 +48,9 @@ public class AnimationsPlayer : MonoBehaviour
     public AudioSource audioSourceMove;
     public AudioSource audioSourceHurt;
     public AudioSource audioSourceDie;
+
+    [SerializeField] private CanvasManager canvas;
+
     void OnCollisionEnter(Collision coll)
     {
         if(coll.gameObject.tag == "Obstacle")
@@ -255,7 +259,6 @@ public class AnimationsPlayer : MonoBehaviour
         //animator.Play("dead");
         //music.enabled = false;
         dead = true;
-
         Invoke("EliminateObject", 1.0f);
     }
     void sword_clip()
@@ -343,11 +346,14 @@ public class AnimationsPlayer : MonoBehaviour
                 audioSourceDie.PlayOneShot(die_sound, 0.3f);
                 //music.enabled = false;
                 dead = true;
-                //Aparecer pantalla lose
+                Invoke("deadNow", 2f);
                 //Invoke("EliminateObject", 1.0f);
             }
         }
 
+    }
+    void deadNow(){
+        canvas.Die();
     }
 
     void ThrowBomb()

@@ -38,7 +38,7 @@ public class GargoyleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPlayerInRange == true && Input.GetButtonDown("Fire1") && !correctAngle){
+        if(isPlayerInRange == true && Input.GetKeyDown(KeyCode.I) && !correctAngle){
             //Debug.Log("Deberia girar la gargola");
             transform.Rotate(0, 90, 0);
             rotateSound.SetActive(false);

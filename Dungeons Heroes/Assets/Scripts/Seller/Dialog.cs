@@ -15,10 +15,12 @@ public class Dialog : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private GameObject healSound;
 
-     [SerializeField, TextArea(4,6)] private string[] dialogueLines;
+    [SerializeField, TextArea(4,6)] private string[] dialogueLines;
+
+    [SerializeField] private CanvasManager canvas;
 
     void Update(){
-        if(isPlayerInRange == true && Input.GetButtonDown("Fire1") && firstdialogue == true){
+        if(isPlayerInRange == true && Input.GetKeyDown(KeyCode.I) && firstdialogue == true){
             if(!dialogueStart){
             StartDialogue();
             }
@@ -48,6 +50,7 @@ public class Dialog : MonoBehaviour
             dialoguePanel.SetActive(false);
             exclamationMark.SetActive(false);
             Time.timeScale = 1f;
+            canvas.ExtraWeapon();
         }
     }
 
@@ -78,7 +81,6 @@ public class Dialog : MonoBehaviour
             else{
                 firstdialogue= false;
             }
-
         }
 
     }

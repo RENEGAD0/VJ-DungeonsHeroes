@@ -38,6 +38,8 @@ public class Boss : MonoBehaviour{
     public bool dead;
     public Image hpBar;
 
+    [SerializeField] private CanvasManager canvas;
+
 
     // Start is called before the first frame update
     void Start()
@@ -175,6 +177,14 @@ public class Boss : MonoBehaviour{
         obj.transform.rotation = point.transform.rotation;
     }
 
+    void OnTriggerEnter(Collider collid){
+
+        if  (collid.name == "sword"){
+            HP_Min -= 25;
+        }
+    }
+    
+
 
     public void Alive(){
         //
@@ -196,6 +206,9 @@ public class Boss : MonoBehaviour{
         }
     }
 
+    public void Die(){
+        canvas.Win();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -206,6 +219,7 @@ public class Boss : MonoBehaviour{
                 animator.SetTrigger("dead");
                 music.enabled = false;
                 dead = true;
+                Invoke("Die", 1f);
             }
         }
         
