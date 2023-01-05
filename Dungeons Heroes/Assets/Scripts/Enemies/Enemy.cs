@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     public AudioSource audioSourceHurt;
     public AudioSource audioSourceDie;
 
+    public Enemy script;
+
     bool drop = false;
 
     /////////////
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        script = GetComponent<Enemy>();
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         target = GameObject.Find("Player");
@@ -64,7 +67,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void bossIA()
     {
-        //int x;
+        int x;
     }
 
     protected virtual void move_force()

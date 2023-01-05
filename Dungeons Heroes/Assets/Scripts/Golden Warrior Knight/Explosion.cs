@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    float timer = 1.6f;
+    float timer = 0.7f;
     float its_happening;
     float radius;
     float force = 500.0f;
@@ -17,13 +17,83 @@ public class Explosion : MonoBehaviour
         radius = 0.8f;
     }
 
+    void OnCollsionEnter(Collision coll)
+    {
+        if (coll.gameObject.tag == "Enemy")
+        {
+            has_exploded = true;
+            GameObject spawnedParticle = Instantiate(explosionParticle, transform.position, transform.rotation);
+            Destroy(spawnedParticle, 1);
+            Component[] components = coll.gameObject.GetComponents(typeof(Component));
+            foreach (Component c in components)
+            {
+                if (c is Fox)
+                {
+                    Fox script = (Fox)c;
+                    script.HP_Min = 0;
+                }
+                else if(c is Slime)
+                {
+                    Slime script = (Slime)c;
+                    script.HP_Min = 0;
+                }
+                else if(c is SpiderBehaviour)
+                {
+                    SpiderBehaviour script = (SpiderBehaviour)c;
+                    script.HP_Min = 0;
+                }
+                else if (c is Lich)
+                {
+                    Lich script = (Lich)c;
+                    script.HP_Min = 0;
+                }
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         its_happening -= Time.deltaTime;
-        if (its_happening <= 0 && !has_exploded)
+        if (!has_exploded)
         {
-            Explode();
+            Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+            int arraySize = colliders.Length;
+            foreach (Collider nearbyObject in colliders)
+            {
+                if (nearbyObject.tag == "Enemy")
+                {
+                    has_exploded = true;
+                    its_happening = -1.0f;
+                    GameObject spawnedParticle = Instantiate(explosionParticle, transform.position, transform.rotation);
+                    Destroy(spawnedParticle, 1);
+                    Component[] components = nearbyObject.gameObject.GetComponents(typeof(Component));
+                    foreach (Component c in components)
+                    {
+                        if (c is Fox)
+                        {
+                            Fox script = (Fox)c;
+                            script.HP_Min = -1.0f;
+                        }
+                        else if (c is Slime)
+                        {
+                            Slime script = (Slime)c;
+                            script.HP_Min = -1.0f;
+                        }
+                        else if (c is SpiderBehaviour)
+                        {
+                            SpiderBehaviour script = (SpiderBehaviour)c;
+                            script.HP_Min = -1.0f;
+                        }
+                        else if (c is Lich)
+                        {
+                            Lich script = (Lich)c;
+                            script.HP_Min = -1.0f;
+                        }
+                    }
+                }
+            }
+            if (its_happening <= 0) Explode();
         }
     }
     void Explode()
