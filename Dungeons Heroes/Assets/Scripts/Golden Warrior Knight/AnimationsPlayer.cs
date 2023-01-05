@@ -7,18 +7,6 @@ using UnityEngine.UI;
 public class AnimationsPlayer : MonoBehaviour
 {
    
-  
-     /*
-    void Update(){
-    if(Input.GetKey(KeyCode.S){
-        ThrowBomb();
-    }
-    void ThrowBomb(){
-        GameObject bomb = Instiantate(bombThrow,transform.position,transform.rotation);
-        Rightbody rb = grenade.GetComponent<Rigidbody>();
-        rb.addForce(transform.forward * throwForce),ForceMode.VelocityChange;
-    }
-    */
     public new Rigidbody rigidbody;
 
     [SerializeField] private float speed = 2f;
@@ -27,11 +15,10 @@ public class AnimationsPlayer : MonoBehaviour
     public float raycastDistance;
     public float health;
     private float sizeWeapon;
-    // transform.localScale = new Vector3(2, transform.localScale.y, transform.localScale.z);
     private float run_speed;
     public float HP_Min;
     public float HP_Max;
-    //public Image barra;
+    public Image barra;
     private Collider swordCollider;
     public bool dead;
     public float throwForce;
@@ -60,6 +47,15 @@ public class AnimationsPlayer : MonoBehaviour
     public AudioSource audioSourceMove;
     public AudioSource audioSourceHurt;
     public AudioSource audioSourceDie;
+    void OnCollisionEnter(Collision coll)
+    {
+        if(coll.gameObject.tag == "Obstacle")
+        {
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
+        }
+    }
+  
     void Start()
     {
         coll = GetComponent<Collider>();
@@ -302,11 +298,6 @@ public class AnimationsPlayer : MonoBehaviour
     
             if (Input.GetKeyDown(KeyCode.O))
             {
-                /*
-                if (!AnimatorIsPlaying("one_hand_attack2")) attackAudioSource.PlayOneShot(sword_sound, 0.7F);
-                animator.Play("one_hand_attack2");
-                swordCollider.enabled = true;
-                */
                 if (!AnimatorIsPlaying("one_hand_attack1") && !AnimatorIsPlaying("one_hand_attack2") && !AnimatorIsPlaying("two_hand_attack1") && !AnimatorIsPlaying("two_hand_attack2"))
                 {
                     Invoke("sword_clip", 0.3f);
@@ -341,12 +332,13 @@ public class AnimationsPlayer : MonoBehaviour
             }
 
 
-            // barra.fillAmount = HP_Min / HP_Max;
+            barra.fillAmount = HP_Min / HP_Max;
         }
        else
         {
             if (!dead)
             {
+                barra.fillAmount = HP_Min / HP_Max;
                 animator.Play("die");
                 audioSourceDie.PlayOneShot(die_sound, 0.3f);
                 //music.enabled = false;
