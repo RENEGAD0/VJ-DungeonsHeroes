@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject ColliderForBoss;
 
     [SerializeField] private GameObject ElementToDeleteForBoss;
-    
+
 
     void Start()
     {

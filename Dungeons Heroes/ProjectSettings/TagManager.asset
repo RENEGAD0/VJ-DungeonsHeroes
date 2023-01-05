@@ -10,6 +10,8 @@ TagManager:
   - Diana
   - Sword
   - Coin
+  - Bomb
+  - Traps
   layers:
   - Default
   - TransparentFX

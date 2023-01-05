@@ -34,6 +34,8 @@ public class Spawn : MonoBehaviour
     public bool sala15 = false;
     public bool sala16 = false;
 
+    [SerializeField] private CanvasManager canvas;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -141,6 +143,7 @@ public class Spawn : MonoBehaviour
 
         else if (sala16)
         {
+            canvas.BossFight();
             boss.SetActive(true);
         }
         /*
@@ -181,7 +184,7 @@ public class Spawn : MonoBehaviour
 
     void checkCameraFromPlayerLocation(float x, float y, float z)
     {
-        //Agrupación de zonas 1
+        //Agrupaciï¿½n de zonas 1
         if (z > 173)
         {
             if (x > 54.5)
@@ -260,7 +263,7 @@ public class Spawn : MonoBehaviour
 
             }
         }
-        //Agrupación de zonas 3
+        //Agrupaciï¿½n de zonas 3
         else if (z < 142)
         {
             if (z < 125.5 && z > 109)
@@ -322,7 +325,7 @@ public class Spawn : MonoBehaviour
             }
 
         }
-        //Agrupación de zonas 2
+        //Agrupaciï¿½n de zonas 2
         else
         {
             if (x > 50)

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Boss : MonoBehaviour{
-    ////////////////////////////  Codigo enemigo base
     public int rutina;
     public float tiempo_rutina;
     public float timer;
@@ -182,6 +181,11 @@ public class Boss : MonoBehaviour{
         if  (collid.name == "sword"){
             HP_Min -= 25;
         }
+        /*
+        if  (collid.name == "bomb"){
+            HP_Min -= 50;
+        }
+        */
     }
     
 
