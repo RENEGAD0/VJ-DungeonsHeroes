@@ -11,6 +11,8 @@ public class LeverActivation : MonoBehaviour
 
     [SerializeField] private GameObject DeleteDoor;
 
+    [SerializeField] private CanvasManager canvas;
+
     public Animator animator;
 
     private void OnTriggerEnter(Collider collision) {
@@ -31,7 +33,11 @@ public class LeverActivation : MonoBehaviour
     void Start()
     {
      animator = GetComponent<Animator>();
+     
+    }
 
+    void getKey(){
+        canvas.getHUDKEY();
     }
 
     // Update is called once per frame
@@ -42,6 +48,7 @@ public class LeverActivation : MonoBehaviour
             animator.SetBool("run", false);
             ChestAparition.SetActive(true);
             DeleteDoor.SetActive(false);
+            Invoke("getKey", 6f);
         }
         
     }

@@ -16,9 +16,21 @@ public class CanvasManager : MonoBehaviour
 
     [SerializeField] private GameObject ExtraWeaponPanel;
 
+    [SerializeField] private GameObject Key1Panel;
+
+    [SerializeField] private GameObject Key2Panel;
+
+    [SerializeField] private GameObject BossKeyPanel;
+
     [SerializeField] private GameObject DieSound;
 
     [SerializeField] private GameObject VicotorySound;
+
+    private bool key1;
+
+    private bool key2;
+
+    private bool bosskey;
 
     private bool idpaused;
 
@@ -27,6 +39,32 @@ public class CanvasManager : MonoBehaviour
         idpaused = true;
         PausePanel.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void getHUDKEY(){
+        if (!key1 && !key2 && !bosskey){
+            getKey1();
+        }
+        else if (key1 && !key2){
+            getKey2();
+        }
+        else if (key1 && key2 && !bosskey){
+            getBossKey();
+        }
+    }    
+
+    public void getKey1(){
+        Key1Panel.SetActive(true);
+        key1 = true;
+    }
+    public void getKey2(){
+        Key2Panel.SetActive(true);
+        key2 = true;
+    }
+
+    public void getBossKey(){
+        BossKeyPanel.SetActive(true);
+        bosskey = true;
     }
 
     public void Die(){
@@ -46,8 +84,7 @@ public class CanvasManager : MonoBehaviour
     public void RestartPause(){
         PausePanel.SetActive(false);
         idpaused = false;
-        Time.timeScale = 1f;
-        
+        Time.timeScale = 1f; 
     }
 
     public void GotoStartMenu(){
@@ -72,6 +109,9 @@ public class CanvasManager : MonoBehaviour
     void Start()
     {
         idpaused = false;
+        key1 = false;
+        key2 = false;
+        bosskey = false;
     }
 
     // Update is called once per frame

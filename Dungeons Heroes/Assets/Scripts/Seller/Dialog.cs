@@ -19,6 +19,8 @@ public class Dialog : MonoBehaviour
 
     [SerializeField] private CanvasManager canvas;
 
+    [SerializeField] private AnimationsPlayer playerController;
+
     void Update(){
         if(isPlayerInRange == true && Input.GetKeyDown(KeyCode.I) && firstdialogue == true){
             if(!dialogueStart){
@@ -45,6 +47,7 @@ public class Dialog : MonoBehaviour
         }
         else{
             healSound.SetActive(true);
+            playerController.RestartHeal();
             firstdialogue = false;
             dialogueStart = false;
             dialoguePanel.SetActive(false);

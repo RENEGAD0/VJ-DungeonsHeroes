@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
     {
         int x = Random.Range(1, 5);
         Vector3 currentPosition = transform.position;
-        Vector3 spawn_position = new Vector3(currentPosition.x, currentPosition.y + 0.5f, currentPosition.z);
+        Vector3 spawn_position = new Vector3(currentPosition.x, currentPosition.y + 1f, currentPosition.z);
         if (x == 1)
         {
             Instantiate(coin, spawn_position, transform.rotation);
