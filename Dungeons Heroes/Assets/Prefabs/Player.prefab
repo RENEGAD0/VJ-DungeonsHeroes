@@ -1724,7 +1724,6 @@ GameObject:
   - component: {fileID: 7004168835431799394}
   - component: {fileID: 2873212745555392322}
   - component: {fileID: 7079306241992886565}
-  - component: {fileID: 6043636088567400848}
   - component: {fileID: 7956258441494048673}
   - component: {fileID: 2811115142651391811}
   - component: {fileID: 2811115142651388092}
@@ -1913,25 +1912,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6043636088567400848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5627562292097845474}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a3b44257b26b4543838d5c6880dc8f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  player: {fileID: 4248881568258665853}
 --- !u!114 &7956258441494048673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1975,6 +1955,7 @@ MonoBehaviour:
   audioSourceMove: {fileID: 2811115142651388095}
   audioSourceHurt: {fileID: 2811115142651388093}
   audioSourceDie: {fileID: 2811115142651388092}
+  canvas: {fileID: 0}
 --- !u!82 &2811115142651391811
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1993,7 +1974,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2089,7 +2070,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2185,7 +2166,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2281,7 +2262,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2377,7 +2358,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

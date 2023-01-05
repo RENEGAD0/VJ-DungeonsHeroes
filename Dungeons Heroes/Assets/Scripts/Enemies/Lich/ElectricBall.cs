@@ -18,6 +18,7 @@ public class ElectricBall : MonoBehaviour
             if (playerScript.dead == false)
             {
                 playerScript.animator.Play("hurt");
+                playerScript.audioSourceHurt.PlayOneShot(playerScript.hurt_sound, 0.3F);
                 Vector3 forceDirection = transform.forward;
                 float forceMagnitude = 600.0f;
                 // rigidbody.velocity = forceDirection;

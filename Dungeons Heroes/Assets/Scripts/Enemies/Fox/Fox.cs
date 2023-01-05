@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Fox : Enemy
 {
-
     protected override void Delay()
     {
         base.Delay();
@@ -43,6 +42,7 @@ public class Fox : Enemy
             else if(collid.name == "sword")
             {
                 if (!(animator.GetCurrentAnimatorStateInfo(0).IsName("Defend"))) {
+                    defendAudioSource2.PlayOneShot(defend_sound, 0.3F);
                     entered = true;
                     Invoke("Delay", 1.0f);
                     HP_Min -= 25;
@@ -61,6 +61,7 @@ public class Fox : Enemy
     protected override void Start()
     {
         base.Start();
+        script = GetComponent<Fox>();
     }
 
     protected override bool AnimatorIsPlaying()
