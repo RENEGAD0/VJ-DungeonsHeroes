@@ -111,5 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 400
+  HPRestored: 20
   collectAudio: {fileID: 8265320141962233384, guid: cbad3dfab445ea744ab40482ee9b9d64, type: 3}
   collectEffect: {fileID: 1702657300312902, guid: 67f6867d274fabb43813190c4774f5a5, type: 3}
+  playerController: {fileID: 0}
