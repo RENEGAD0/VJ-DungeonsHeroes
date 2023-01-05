@@ -49,6 +49,14 @@ public class AnimationsPlayer : MonoBehaviour
     public AudioSource audioSourceHurt;
     public AudioSource audioSourceDie;
 
+    [SerializeField] private GameObject DeleteDoor1;
+
+    [SerializeField] private GameObject DeleteDoor2;
+
+    [SerializeField] private GameObject DeleteDoorBoss;
+
+    private bool key1Getted;
+
     [SerializeField] private CanvasManager canvas;
 
     void OnCollisionEnter(Collision coll)
@@ -62,6 +70,7 @@ public class AnimationsPlayer : MonoBehaviour
   
     void Start()
     {
+        key1Getted = false;
         coll = GetComponent<Collider>();
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
@@ -112,6 +121,14 @@ public class AnimationsPlayer : MonoBehaviour
             string animationName = clipInfo[0].clip.name;
             Debug.Log("Currently playing animation: " + animationName);
         }
+    }
+
+    public void RestartHeal(){
+        HP_Min = HP_Max;
+    }
+
+    public void RestoreHeal(float HPRestored){
+        HP_Min = HP_Min + HPRestored;
     }
     void Movement()
     {
@@ -327,11 +344,21 @@ public class AnimationsPlayer : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.K))
             {
-                //OBTENER LLAVE
+                if (!key1Getted){
+                    canvas.getKey1();
+                    DeleteDoor1.SetActive(false);
+                    key1Getted = true;
+                }
+                else{
+                    canvas.getKey2();
+                    DeleteDoor2.SetActive(false);
+                }
+                
             }
             if (Input.GetKeyDown(KeyCode.B))
             {
-                //OBTENER LLAVE BOSS
+                canvas.getBossKey();
+                DeleteDoorBoss.SetActive(false);
             }
 
 

@@ -8,6 +8,10 @@ public class CameraController : MonoBehaviour
     public Transform player;
 
     public Animator animator;
+
+    [SerializeField] private GameObject ColliderForBoss;
+
+    [SerializeField] private GameObject ElementToDeleteForBoss;
     
 
     void Start()
@@ -88,8 +92,11 @@ public class CameraController : MonoBehaviour
             }
             else{
                 //Debug.Log("Entro a Zona16");
+
                 animator.SetBool("Zona13", false);
                 animator.SetBool("Zona16", true);
+                ColliderForBoss.SetActive(true);
+                ElementToDeleteForBoss.SetActive(false);
             }
             
         }
