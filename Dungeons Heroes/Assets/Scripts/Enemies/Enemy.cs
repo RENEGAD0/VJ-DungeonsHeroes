@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void bossIA()
     {
-        int x;
+        //int x;
     }
 
     protected virtual void move_force()

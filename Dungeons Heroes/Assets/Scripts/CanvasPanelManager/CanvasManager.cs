@@ -14,6 +14,12 @@ public class CanvasManager : MonoBehaviour
 
     [SerializeField] private GameObject DiePanel;
 
+    [SerializeField] private GameObject ExtraWeaponPanel;
+
+    [SerializeField] private GameObject DieSound;
+
+    [SerializeField] private GameObject VicotorySound;
+
     private bool idpaused;
 
 
@@ -25,6 +31,7 @@ public class CanvasManager : MonoBehaviour
 
     public void Die(){
         DiePanel.SetActive(true);
+        DieSound.SetActive(true);
     }
 
     public void BossFight(){
@@ -33,6 +40,7 @@ public class CanvasManager : MonoBehaviour
 
     public void Win(){
         WinPanel.SetActive(true);
+        VicotorySound.SetActive(true);
     }
 
     public void RestartPause(){
@@ -53,6 +61,10 @@ public class CanvasManager : MonoBehaviour
     public void ReloadScene(){
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ExtraWeapon(){
+        ExtraWeaponPanel.SetActive(true);
     }
 
 

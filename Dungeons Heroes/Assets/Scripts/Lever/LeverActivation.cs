@@ -37,7 +37,7 @@ public class LeverActivation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPlayerInRange == true && Input.GetButtonDown("Fire1")){
+        if(isPlayerInRange == true && Input.GetKeyDown(KeyCode.I)){
             animator.SetTrigger("Actived");
             animator.SetBool("run", false);
             ChestAparition.SetActive(true);
