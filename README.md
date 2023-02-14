@@ -1,3 +1,5 @@
 # VJ-DungeonsHeroes
 
-Proyecto en Unity 2021.3.13f1
+Unity 2021.3.13f1
+
+3D game for Videogames subject on FIB UPC
