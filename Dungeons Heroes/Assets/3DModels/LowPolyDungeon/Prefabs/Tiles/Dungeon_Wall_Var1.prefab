@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 936655011711060175}
   - component: {fileID: 936655011710290159}
   - component: {fileID: 936655011709291055}
-  - component: {fileID: 936655011713595983}
+  - component: {fileID: 7687042536832019289}
   m_Layer: 0
   m_Name: Dungeon_Wall_Var1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &936655011713595983
-MeshCollider:
+--- !u!65 &7687042536832019289
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7322927112031727365, guid: ab61c646b6bbc5c498e1e835ea9ac264, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 3.9999995, y: 6.4249606, z: 1.3315887}
+  m_Center: {x: -0.00000023841858, y: 2.8263695, z: -1.8794174}
